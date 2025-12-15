@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <script src="src/js/script.js" defer></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header__logo">
+            <a href="index.html">
+                <img src="assets/img/image7.webp" alt="Logo">
+            </a>
+        </div>
+        
+        <button class="menu-button" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="menu" hidden>
+    <ul>
+        <li><a href="Chercheuse.html">Lise meitner</a></li>
+        <li><a href="Fission.html">Explication de la fission nucléaire</a></li>
+        <li><a href="Livre.html">L’aventure nucléaire</a></li>
+        <li><a href="Film.html">Liste des films </a></li>
+        <li><a href="Glossaire.html">Glossaire</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+    </ul>
+</nav>
+    </header>
+
+    <main class="main-content">
+        <h1 class="page-title">Formulaire de contact</h1>
+
+        <section class="form-container">
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="nom">Votre nom:</label>
+                    <input type="text" id="nom" placeholder="ex: Jean-Michel">
+                </div>
+
+                <div class="form-group">
+                    <label for="sujet">Votre sujet:</label>
+                    <input type="text" id="sujet">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Votre e-mail:</label>
+                    <input type="email" id="email" placeholder="ex:Jean.michel@hotmail.fr">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Votre message:</label>
+                    <textarea id="message"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-top">
+                <nav class="footer-nav">
+                    <a href="Index.html">Menu</a>
+                    <a href="Glossaire.html">Glossaire</a>
+                    <a href="Projet.html">Autres projets</a>
+                    <a href="Contact.html">Nous contacter</a>
+                </nav>
+
+                <div class="footer-deco">
+                    <img src="assets/img/image7.webp" alt="Logo">
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Mention Légale</h3>
+                <p>Projet réalisé en 2025 dans le cadre d'un exercice pédagogique au département MMI de Montbéliard</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>CONTACT</h3>
+                <p>Loddo Enzo<br>Groupe B1<br>enzo.loddo@edu.univ-fcomte.fr</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>NOUS SUIVRE</h3>
+                <div class="social-icons">
+                    <img src="assets/Image/instagram.webp" alt="Instagram">
+                    <img src="assets/Image/facebook.webp" alt="Facebook">
+                    <img src="assets/Image/twitter.webp" alt="Twitter">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="btn-retour-haut" class="bouton-haut" aria-label="Retour en haut de page">
+        <img src="assets/Image/Fleche.webp" alt="Remonter" class="bouton-haut__icone">
+    </button>
+
+</body>
+</html>

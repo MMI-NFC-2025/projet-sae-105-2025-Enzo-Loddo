@@ -3,8 +3,11 @@
 
 À compléter :
 
-- NOM :
-- PRÉNOM :
-- GROUPE :
+- NOM : Loddo
+- PRÉNOM : Enzo
+- GROUPE : B1
 - URL du site :
-- URL FIGMA :
+- URL FIGMA : https://www.figma.com/design/OMDNkkvroLukrQEedwuxPj/Maquette-Mobile-ENZO.L--Copy-?node-id=0-1&t=HGwJRTVw8r42F6bP-1
+
+
+
