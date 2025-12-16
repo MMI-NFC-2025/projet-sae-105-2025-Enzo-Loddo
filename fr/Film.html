@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Films</title>
+    <link rel="stylesheet" href="../src/css/style.css">
+    <script src="../src/js/script.js" defer></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header__logo">
+            <a href="index.html">
+                <img src="../assets/img/image7.webp" alt="Logo">
+            </a>
+        </div>
+        
+        <button class="menu-button" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="menu" hidden>
+            <ul>
+                <li><a href="index.html">Lise Meitner</a></li>
+                <li><a href="Fission.html">Explication de la fission nucléaire</a></li>
+                <li><a href="Livre.html">L’aventure nucléaire</a></li>
+                <li><a href="Film.html">Liste des films </a></li>
+                <li><a href="Glossaire.html">Glossaire</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        
+        <section class="page-title">
+            <h1>Liste des<br>films</h1>
+        </section>
+
+        <section class="intro-text">
+            <p>
+                De nombreux films retracent l'importance des femmes dans la recherche scientifique de près ou de loin.
+            </p>
+        </section>
+
+        <section class="film-selection">
+            <div class="carousel carousel--films">
+                <div class="carousel__container">
+                    
+                    <div class="carousel__item film-card">
+                        <img src="../assets/img/Film1.webp" alt="Affiche Les Figures de l'Ombre">
+                        <a href="#" class="btn-discover">Découvrir</a>
+                    </div>
+
+                    <div class="carousel__item film-card">
+                        <img src="../assets/img/Film2.webp" alt="Affiche Oppenheimer">
+                        <a href="#focus-oppenheimer" class="btn-discover">Découvrir</a>
+                    </div>
+
+                    <div class="carousel__item film-card">
+                        <img src="../assets/img/Film3.webp" alt="Affiche Radioactive">
+                        <a href="#" class="btn-discover">Découvrir</a>
+                    </div>
+
+                    <div class="carousel__item film-card">
+                        <img src="../assets/img/Film4.webp" alt="Affiche Radioactive">
+                        <a href="#" class="btn-discover">Découvrir</a>
+                    </div>
+
+                    <div class="carousel__item film-card">
+                        <img src="../assets/img/Film5.webp" alt="Affiche Radioactive">
+                        <a href="#" class="btn-discover">Découvrir</a>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="separator-line"></div>
+        </section>
+
+        <section id="focus-oppenheimer" class="film-focus">
+            
+            <div class="film-header">
+                <div class="film-poster">
+                    <img src="../assets/img/affiche Film.webp" alt="Affiche du film Oppenheimer">
+                </div>
+                <div class="film-details">
+                    <ul>
+                        <li><strong>Nom:</strong> Oppenheimer</li>
+                        <li><strong>Réalisateur:</strong> Christopher Nolan</li>
+                        <li><strong>Date de sortie:</strong> 19 juillet 2023</li>
+                        <li><strong>Genre:</strong> Thriller</li>
+                        <li><strong>Durée:</strong> 3H</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="film-description">
+                Le film Oppenheimer, réalisé par Christopher Nolan, raconte l'histoire vraie de J. Robert Oppenheimer, le physicien américain qui a dirigé le projet Manhattan pendant la Seconde Guerre mondiale. Ce projet a conduit à la création de la première bombe atomique, utilisée en 1945 sur Hiroshima et Nagasaki. Le film suit son parcours depuis ses débuts de scientifique brillant jusqu'à ses dilemmes moraux, face à la puissance destructrice de l'arme qu'il a contribué à créer.
+            </p>
+
+           <div class="media-block">
+                <div class="media-frame video-frame">
+                    <video controls poster="../assets/img/oppenheimer-poster.webp" style="width: 100%; height: auto; display: block; border-radius: inherit;">
+                        <source src="../assets/video/bande-annonce-oppenheimer.mp4" type="video/mp4">
+                        
+                        Votre navigateur ne gère pas l'élément vidéo.
+                    </video>
+                </div>
+            </div>
+
+            <p class="film-connection">
+                Lise Meitner est liée à cette histoire, car c'est elle qui a permis de comprendre la fission nucléaire, base du projet Manhattan. Pourtant, elle n'est jamais mentionnée, illustrant l'oubli de nombreuses femmes scientifiques dont le travail a rendu possible cette « aventure atomique ».
+            </p>
+
+            <div class="media-block">
+                <div class="media-frame">
+                    <img src="../assets/img/Affiche Film2.webp" alt="Photo de groupe congrès Solvay">
+                </div>
+                <p class="caption caption--small">
+                    Photographie datant des années 20, on peut y voir Hertha Sponer, Albert Einstein, Ingrid Franck, James Franck, Lise Meitner, Fritz Haber, Otto Hahn (devant) et Walter Grotrian, Wilhelm Westphal, Otto von Baeyer, Peter Pringsheim, Gustav Hertz (derrière).
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-top">
+                <nav class="footer-nav">
+                    <a href="index.html">Menu</a>
+                    <a href="Glossaire.html">Glossaire</a>
+                    <a href="Projet.html">Autres projets</a>
+                    <a href="Contact.html">Nous contacter</a>
+                </nav>
+
+                <div class="footer-deco">
+                    <img src="../assets/img/image7.webp" alt="Logo">
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Mention Légale</h3>
+                <p>Projet réalisé en 2025 dans le cadre d'un exercice pédagogique au département MMI de Montbéliard</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>CONTACT</h3>
+                <p>Loddo Enzo<br>Groupe B1<br>enzo.loddo@edu.univ-fcomte.fr</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>NOUS SUIVRE</h3>
+                <div class="social-icons">
+                    <img src="../assets/img/instagram.webp" alt="Instagram">
+                    <img src="../assets/img/facebook.webp" alt="Facebook">
+                    <img src="../assets/img/twitter.webp" alt="Twitter">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="btn-retour-haut" class="bouton-haut" aria-label="Retour en haut de page">
+        <img src="../assets/img/Fleche.webp" alt="Remonter" class="bouton-haut__icone">
+    </button>
+
+</body>
+</html>
