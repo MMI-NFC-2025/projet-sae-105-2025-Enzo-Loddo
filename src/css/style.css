@@ -3,15 +3,14 @@
    ========================================= */
 :root {
     /* --- COULEURS --- */
-    --bg-color: #121212;       /* Fond principal (Noir/Gris très foncé) */
-    --card-bg: #1E1E1E;        /* Fond des cartes (légèrement plus clair) */
-    --text-primary: #F5F5F5;   /* Blanc cassé pour la lecture */
-    --text-secondary: #CCCCCC; /* Gris clair pour les descriptions */
-    --accent-color: #FFFFFF;   /* Blanc pur pour les filets/lignes */
-    --gold-color: #C6A87C;     /* Doré pour les bordures spéciales */
+    --bg-color: #121212;
+    --card-bg: #1E1E1E;
+    --text-primary: #F5F5F5;
+    --text-secondary: #CCCCCC;
+    --accent-color: #FFFFFF;
+    --gold-color: #C6A87C;
     
     /* --- TYPOGRAPHIE --- */
-    /* Assure-toi d'importer ces polices ou d'utiliser celles par défaut */
     --font-title: 'Space Mono', 'Courier New', monospace;
     --font-body: 'Inconsolata', 'Courier New', monospace;
 
@@ -22,7 +21,6 @@
     --spacing-lg: 4rem;
 }
 
-/* Reset de base pour annuler les marges par défaut */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -35,7 +33,7 @@ body {
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.5;
-    overflow-x: hidden; /* Empêche le scroll horizontal global */
+    overflow-x: hidden;
 }
 
 a {
@@ -55,7 +53,7 @@ img, video {
 }
 
 /* =========================================
-   4. HEADER & MENU
+   2. HEADER & MENU
    ========================================= */
 .header {
     display: flex;
@@ -65,9 +63,7 @@ img, video {
     position: sticky;
     top: 0;
     z-index: 1000;
-    /* Nouvelle couleur de fond demandée */
     background-color: #242424; 
-    /* Optionnel : petite ombre pour détacher le header du reste */
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
@@ -76,16 +72,14 @@ img, video {
     height: auto;
 }
 
-/* Conteneur droite (Langue + Burger) */
 .header__right {
     display: flex;
     align-items: center;
-    gap: 1.5rem; /* Espace entre FR/EN et le burger */
+    gap: 1.5rem;
 }
 
-/* Bouton FR/EN */
 .lang-switch {
-    font-family: var(--font-body); /* Police simple sans-serif */
+    font-family: var(--font-body);
     color: var(--text-primary);
     font-size: 1rem;
     text-transform: uppercase;
@@ -96,7 +90,6 @@ img, video {
     text-decoration: underline;
 }
 
-/* Bouton Burger */
 .menu-button {
     background: none;
     border: none;
@@ -118,14 +111,13 @@ img, video {
     transition: all 0.3s ease;
 }
 
-/* MENU OVERLAY (Plein écran) */
 .menu {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--bg-color); /* Le fond du menu reste noir/gris foncé */
+    background-color: var(--bg-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -168,7 +160,6 @@ h1, h2, h3 {
     text-transform: uppercase;
 }
 
-/* Titre de section avec ligne soulignée (Style Maquette) */
 .section-title {
     font-size: 2rem;
     text-align: center;
@@ -184,7 +175,6 @@ h1, h2, h3 {
     padding-bottom: 5px;
 }
 
-/* Ligne de séparation fine */
 .separator-line {
     width: 100%;
     height: 1px;
@@ -193,8 +183,14 @@ h1, h2, h3 {
     margin: var(--spacing-lg) 0;
 }
 
+/* Pour le texte doré (Effet Matilda) */
+.gold-text {
+    color: var(--gold-color);
+    font-weight: bold;
+}
+
 /* =========================================
-   4. PAGE INDEX : HERO SECTION
+   4. PAGE INDEX : HERO & CAROUSELS
    ========================================= */
 .hero {
     text-align: center;
@@ -209,15 +205,12 @@ h1, h2, h3 {
 
 .hero__image img {
     width: 100%;
-    max-width: 500px; /* Limite la largeur sur grand écran */
+    max-width: 500px;
     margin: 0 auto;
-    filter: grayscale(100%); /* Met l'image en noir et blanc */
+    filter: grayscale(100%);
     border-radius: 4px;
 }
 
-/* =========================================
-   5. PAGE INDEX : CAROUSELS (SCROLL HORIZONTAL)
-   ========================================= */
 .intro-meitner, .articles-section {
     padding: 0 var(--spacing-sm);
 }
@@ -230,22 +223,18 @@ h1, h2, h3 {
     color: var(--text-secondary);
 }
 
-/* Conteneur principal du carousel */
 .carousel {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
 }
 
-/* Zone de défilement */
 .carousel__container {
     display: flex;
     gap: var(--spacing-md);
-    overflow-x: auto; /* Permet le scroll horizontal */
-    scroll-snap-type: x mandatory; /* Force l'arrêt sur une image */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     padding-bottom: var(--spacing-sm);
-    
-    /* Masquer la barre de scroll (Chrome/Safari/Opera) */
     -webkit-overflow-scrolling: touch; 
 }
 
@@ -253,56 +242,40 @@ h1, h2, h3 {
     display: none; 
 }
 
-/* Éléments du carousel */
 .carousel__item, .card {
-    flex: 0 0 70%; /* Chaque élément prend 70% de la largeur de l'écran */
-    scroll-snap-align: center; /* L'élément se centre à l'arrêt du scroll */
+    flex: 0 0 70%;
+    scroll-snap-align: center;
     max-width: 300px;
 }
 
+/* Styles Portraits (Ronds) */
 .carousel--portraits .carousel__item img {
-    /* 1. Forme géométrique */
     border-radius: 50%;
     aspect-ratio: 1 / 1;
-    
-    /* 2. Gestion de l'image */
     object-fit: cover;
-    object-position: center top; /* Centre sur le visage */
-    
-    /* 3. Dimensions (MODIFIÉES) */
+    object-position: center top;
     width: 100%;
-    max-width: 280px;  /* <-- J'ai augmenté ici (avant c'était 200px) */
+    max-width: 280px;
     margin: 0 auto;
-    
-    /* 4. Bordure */
     border: 2px solid transparent;
     display: block;
 }
-/* Effet doré sur une image spécifique si besoin */
 .carousel--portraits .carousel__item:nth-child(even) img {
     border-color: var(--gold-color);
 }
 
-/* --- Style spécifique pour le carousel d'articles (Second carousel) --- */
-
-/* 1. Le conteneur de la carte (Titre + Image) */
+/* Styles Articles (Rectangles avec bordure blanche sur l'image) */
 .carousel--articles .card--article {
-    /* On enlève l'ancienne bordure qui encadrait tout (titre + image) */
     border: none;
     background: transparent;
     padding: 0;
-    
-    /* On fixe une largeur pour que toutes les cartes occupent la même place */
     width: 260px;
-    min-width: 260px; /* Important pour le scroll horizontal */
-    
-    /* Disposition verticale */
+    min-width: 260px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* 2. Le Titre au-dessus */
 .carousel--articles .card__title {
     font-size: 1.1rem;
     text-align: center;
@@ -311,33 +284,21 @@ h1, h2, h3 {
     border: none;
     color: var(--text-primary);
     width: 100%;
-    /* On s'assure que le titre ne prend pas trop de place */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* 3. L'Image (Modifications demandées) */
 .carousel--articles .card__image img {
-    /* DIMENSIONS FIXES pour uniformiser toutes les images */
-    width: 100%;       /* Prend toute la largeur de la carte (260px) */
-    height: 380px;     /* Hauteur fixe : à ajuster selon tes préférences */
-    
-    /* Remplissage parfait : l'image est recadrée pour remplir le rectangle sans déformation ni blanc */
+    width: 100%;
+    height: 380px;
     object-fit: cover; 
-    
-    /* CONTOUR BLANC directement sur l'image */
     border: 2px solid #FFFFFF; 
-    
-    /* Arrondir les angles de l'image (comme sur ta maquette) */
     border-radius: 20px;
-    
-    /* S'assure qu'il n'y a pas de fond parasite */
     display: block;
     background-color: #000; 
 }
 
-/* Barre de progression (Décoratif pour l'instant) */
 .carousel__scrollbar {
     width: 100px;
     height: 4px;
@@ -353,6 +314,185 @@ h1, h2, h3 {
     height: 100%;
     background-color: var(--text-primary);
     border-radius: 2px;
+}
+/* --- Style pour les blocs de texte simples --- */
+.text-block {
+    text-align: center;       /* Centre le texte horizontalement */
+    margin: 2rem auto;        /* Ajoute de l'espace en haut/bas et centre le bloc */
+    max-width: 800px;         /* Limite la largeur pour que les lignes ne soient pas trop longues sur grand écran */
+    padding: 0 1rem;          /* Ajoute un peu d'espace sur les côtés sur mobile */
+    font-size: 1.05rem;       /* Légèrement plus grand pour la mise en valeur */
+    line-height: 1.6;
+}
+/* =========================================
+   5. PAGE BIOGRAPHIE (LISE MEITNER)
+   ========================================= */
+
+/* A. Centrer la photo principale */
+.bio-portrait {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 2rem auto;
+    width: 100%;
+}
+
+.bio-portrait img {
+    max-width: 300px; 
+    width: 80%;
+    border: 3px solid #FFF;
+    border-radius: 20px;
+}
+
+/* B. Centrer le bloc "Nom, Naissance..." */
+.bio-data {
+    max-width: 400px; 
+    margin: 0 auto;
+    text-align: left;
+    padding-left: 20px; 
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+/* C. MISE EN PAGE : TEXTE GAUCHE / IMAGE DROITE (Ta demande principale) */
+.bio-split {
+    display: flex;              /* Active Flexbox */
+    justify-content: space-between; 
+    align-items: center;        
+    gap: 3rem;                  /* Espace entre texte et image */
+    margin: 2rem auto;          
+    padding: 0 1rem;
+    max-width: 1100px;
+}
+
+.bio-text {
+    flex: 1;                    /* Le texte prend toute la place dispo */
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.bio-text p {
+    margin-bottom: 1.5rem;
+}
+
+.bio-image-right {
+    flex: 0 0 40%;              /* L'image prend 40% de la largeur */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bio-image-right img {
+    width: 100%;
+    max-width: 350px;
+    border: 3px solid var(--gold-color);
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* D. Centrer la section Otto Hahn */
+.focus-otto {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem 0;
+}
+
+.otto-frame {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.otto-frame img {
+    border: 2px solid var(--gold-color);
+    border-radius: 20px;
+    max-width: 100%;
+    width: 350px;
+}
+
+.caption {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    color: #CCCCCC;
+}
+
+/* E. Timeline "Matilda" (Style corrigé pour correspondre à ton HTML) */
+.matilda-timeline {
+    padding: 0 1rem;
+    margin-top: var(--spacing-lg);
+}
+
+.timeline-container {
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px solid #FFF; /* La ligne verticale */
+    padding-bottom: 50px;
+}
+
+/* La flèche en bas de la timeline */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -6px;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #FFF;
+    border-bottom: 2px solid #FFF;
+    transform: rotate(45deg);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+/* La carte grise (Nom/Date) */
+.timeline-card {
+    background-color: #D9D9D9;
+    color: #000;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-align: center;
+    width: 140px;
+    position: relative;
+    margin-left: 20px;
+}
+
+/* Le trait horizontal vers la carte */
+.timeline-card::before {
+    content: '';
+    position: absolute;
+    left: -42px; /* Connecte à la ligne verticale */
+    top: 50%;
+    width: 42px;
+    height: 2px;
+    background-color: #FFF;
+}
+
+/* L'image ronde à droite */
+.timeline-img {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.timeline-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gold-color);
 }
 
 /* =========================================
@@ -378,7 +518,6 @@ h1, h2, h3 {
     align-items: flex-start;
 }
 
-/* 1. Liens de navigation (Menu, Glossaire...) EN GRAS */
 .footer-nav {
     display: flex;
     flex-direction: column;
@@ -388,8 +527,8 @@ h1, h2, h3 {
 .footer-nav a {
     font-family: var(--font-title);
     color: var(--text-primary);
-    font-weight: bold;        /* <-- Mis en gras */
-    text-transform: capitalize; /* Met la 1ère lettre en majuscule */
+    font-weight: bold;
+    text-transform: capitalize;
     font-size: 1.1rem;
 }
 
@@ -398,22 +537,20 @@ h1, h2, h3 {
     opacity: 0.8;
 }
 
-/* 2. Titres de section (Mention Légale, Contact...) EN GRAS */
 .footer-section h3 {
     font-size: 0.9rem;
-    color: var(--text-primary); /* Blanc pur */
-    font-weight: bold;          /* <-- Mis en gras */
+    color: var(--text-primary);
+    font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 1rem;
     letter-spacing: 1px;
 }
 
 .footer-section p {
-    color: var(--text-secondary); /* Gris clair pour le texte de contenu */
+    color: var(--text-secondary);
     line-height: 1.6;
 }
 
-/* 3. Icônes Réseaux Sociaux (Rendus visibles) */
 .social-icons {
     display: flex;
     gap: 1.5rem;
@@ -422,20 +559,14 @@ h1, h2, h3 {
 .social-icons img {
     width: 32px;
     height: 32px;
-    
-    /* C'est cette ligne qui fait la magie : */
-    /* invert(1) transforme le noir en blanc */
     filter: invert(1); 
-    
     transition: transform 0.3s;
 }
 
-/* Optionnel : petit effet au survol */
 .social-icons img:hover {
     transform: scale(1.1);
 }
 
-/* Bouton "Retour en haut" */
 .bouton-haut {
     position: fixed;
     bottom: 20px;
@@ -454,7 +585,6 @@ h1, h2, h3 {
 
 .bouton-haut__icone {
     width: 40px;
-    /* Si ta flèche est noire, on l'inverse aussi pour qu'elle soit blanche */
     filter: invert(1); 
     transform: rotate(-90deg);
 }
@@ -463,7 +593,6 @@ h1, h2, h3 {
    7. MEDIA QUERIES (TABLETTE & ORDI)
    ========================================= */
 @media (min-width: 768px) {
-    /* Ajustements généraux */
     .header {
         padding: var(--spacing-md) var(--spacing-lg);
     }
@@ -472,15 +601,27 @@ h1, h2, h3 {
         font-size: 4rem;
     }
 
-    /* Passer les carousels en grille sur grand écran ? 
-       Ou garder le scroll mais avec des éléments plus petits */
     .carousel__item, .card {
-        flex: 0 0 300px; /* Taille fixe confortable */
+        flex: 0 0 300px;
     }
 
     .footer-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 Colonnes */
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: var(--spacing-md);
+    }
+}
+
+/* Mobile responsive pour le bloc Texte/Image */
+@media (max-width: 768px) {
+    .bio-split {
+        flex-direction: column; /* Passe en vertical sur mobile */
+        gap: 1.5rem;
+    }
+
+    .bio-image-right {
+        flex: 0 0 auto;
+        width: 100%;
+        justify-content: center;
     }
 }

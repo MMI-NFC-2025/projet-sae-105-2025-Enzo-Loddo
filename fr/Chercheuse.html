@@ -3,24 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <link rel="stylesheet" href="src/css/style.css">
-    <script src="src/js/script.js" defer></script>
+    <title>Lise Meitner - Biographie</title>
+    <link rel="stylesheet" href="../src/css/style.css">
+    <script src="../src/js/script.js" defer></script>
 </head>
 <body>
 
     <header class="header">
         <div class="header__logo">
             <a href="index.html">
-                <img src="assets/img/image7.webp" alt="Logo">
+                <img src="../assets/img/image7.webp" alt="Logo">
             </a>
         </div>
         
-        <button class="menu-button" aria-label="Menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <div class="header__right">
+            <a href="../en/index.html" class="lang-switch">FR/EN</a>
+
+            <button class="menu-button" aria-label="Menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
 
         <nav class="menu" hidden>
             <ul>
@@ -36,118 +40,128 @@
 
     <main class="main-content">
         
-        <section class="hero">
-            <h1 class="hero__title">Lise Meitner 
-            <div class="hero__image">
+        <section class="page-title">
+            <h1>Lise Meitner</h1>
+        </section>
+
+        <section class="bio-header">
+            <div class="bio-portrait">
                 <img src="../assets/img/hero Lise meitner.webp" alt="Lise Meitner">
             </div>
+            
+            <ul class="bio-data">
+                <li><strong>Nom :</strong> Lise Meitner</li>
+                <li><strong>Naissance :</strong> 7 novembre 1878</li>
+                <li><strong>Mort :</strong> 27 octobre 1968</li>
+                <li><strong>Origine :</strong> Autrichienne</li>
+                <li><strong>Métier :</strong> Physicienne</li>
+                <li><strong>Découverte :</strong> Fission nucléaire</li>
+            </ul>
         </section>
 
-        <section class="biography-card">
-            <h2 class="section-title">Lise Meitner</h2>
+        <div class="separator-line"></div>
+
+        <section class="bio-split">
+            <div class="bio-text">
+                <p>
+                    Lise Meitner était une physicienne autrichienne, puis suédoise. Née à Vienne, Lise a dû faire face aux restrictions de l'époque interdisant aux femmes l'accès à l'enseignement supérieur.
+                </p>
+                <p>
+                    Elle a persévéré, a obtenu un doctorat en physique à l'Université de Vienne en 1905. Malgré ces obstacles, elle est devenue la deuxième femme à obtenir un doctorat en physique à l'Université de Vienne en 1906.
+                </p>
+            </div>
             
-            <div class="card-content">
-                <div class="card-image">
-                    
-                </div>
+            <div class="bio-image-right">
+                <img src="../assets/img/image 1 Lise meitner.webp" alt="Lise Meitner au tableau">
+            </div>
+        </section>
+
+        <section class="text-block">
+            <p>
+                La découverte fondamentale pour laquelle elle est reconnue est l'explication théorique de <span class="underline">“la fission nucléaire”.</span>
+            </p>
+            <div class="separator-line"></div>
+            <p>
+                Lise Meitner a joué un rôle essentiel dans la découverte de la fission nucléaire, mais son collègue Otto Hahn a reçu tout le mérite. 
+                Hahn a réalisé les expériences, mais c’est Meitner, avec son neveu Otto Frisch, qui a compris que le noyau d’uranium se cassait en deux, libérant de l’énergie.
+                Pourtant, en 1944, le prix Nobel fut attribué à Hahn seul.
+            </p>
+        </section>
+
+        <section class="focus-otto">
+            <div class="otto-frame">
+                <img src="../assets/img/image 2 Lise meitner.webp" alt="Portrait de Otto Hahn">
+            </div>
+            <p class="caption">
+                Otto Hahn, chimiste allemand lauréat du prix Nobel de chimie de 1944 pour la découverte de la fission nucléaire
+            </p>
+        </section>
+
+        <div class="separator-line"></div>
+
+        <section class="text-block">
+            <p>
+                À travers l’histoire, de nombreuses femmes scientifiques ont vu leurs découvertes également minimisées ou volées, victimes de ce qu’on appelle <span class="gold-text">“l’effet Matilda”</span>.
+            </p>
+            <p>
+                Cette frise retrace le parcours de celles qui, malgré les obstacles et l’injustice, ont contribué à faire avancer la science. Leurs histoires rappellent que le génie n’a pas de genre, mais que la reconnaissance, elle, a longtemps été inégale.
+            </p>
+        </section>
+
+        <section class="matilda-timeline">
+            <h2>Liste des Matilda:</h2>
+            
+            <div class="timeline-container">
                 
-                <ul class="card-stats">
-                    <li><strong>Nom :</strong> Lise Meitner</li>
-                    <li><strong>Naissance :</strong> 7 novembre 1878</li>
-                    <li><strong>Mort :</strong> 27 octobre 1968</li>
-                    <li><strong>Origine :</strong> Autrichienne</li>
-                    <li><strong>Métier :</strong> Physicienne</li>
-                    <li><strong>Découverte :</strong> Fission nucléaire</li>
-                </ul>
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        Rosalind<br>Franklin<br>(1920-1958)
+                    </div>
+                    <div class="timeline-img">
+                        <img src="../assets/img/Liste 1.webp" alt="Portrait de Rosalind Franklin">
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        Lise<br>Meitner<br>(1878-1968)
+                    </div>
+                    <div class="timeline-img">
+                        <img src="../assets/img/Liste 2.webp" alt="Portrait de Lise Meitner">
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        Nettie Maria<br>Stevens<br>(1861-1912)
+                    </div>
+                    <div class="timeline-img">
+                        <img src="../assets/img/Liste 3.webp" alt="Portrait de Nettie Maria Stevens">
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        Marthe<br>Gautier<br>(1917-2014)
+                    </div>
+                    <div class="timeline-img">
+                        <img src="../assets/img/Liste 4.webp" alt="Portrait de Marthe Gautier">
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        Jocelyn Bell<br>Burnell<br>(1943)
+                    </div>
+                    <div class="timeline-img">
+                        <img src="../assets/img/Liste 5.webp" alt="Portrait de Jocelyn Bell Burnell">
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <img src="../assets/img/image 1 Lise meitner.webp" alt="Portrait de Lise Meitner">
-
-        <section class="biography-text">
-            <p>
-                Lise Meitner était une physicienne autrichienne, puis suédoise .
-            </p>
-            <p>
-                Née à Vienne, Lise a dû faire face aux restrictions de l'époque interdisant aux femmes l'accès à l'enseignement supérieur.
-            </p>
-            <p>
-               Elle a persévéré, a obtenu un doctorat en physique à l'Université de Vienne en 1905.</p> Malgré ces obstacles, elle est devenue la deuxième femme à obtenir un doctorat en physique à l'Université de Vienne en 1906.
-        </p>
-        <p> La découverte fondamentale pour laquelle elle est reconnue est l'explication théorique de <strong>“la fission nucléaire”.</strong></p>
-        <p> Lise Meitner a joué un rôle essentiel dans la découverte de la fission nucléaire, mais son collègue Otto Hahn a reçu tout le mérite. </p>
-    <p> Hahn a réalisé les expériences, mais c’est Meitner, avec son neveu Otto Frisch, qui a compris que le noyau d’uranium se cassait en deux, libérant de l’énergie.</p>
-    <p> Pourtant, en 1944, le prix Nobel fut attribué à Hahn seul.</p>
-
-<img src="../assets/img/image 2 Lise meitner.webp" alt="Portrait de Otto hann">
-
-<p> Otto Hahn, chimiste allemand lauréat du prix Nobel de chimie de 1944 pour la découverte de la fission nucléaire</p>
- <p> À travers l’histoire, de nombreuses femmes scientifiques ont vu leurs découvertes également minimisées ou volées, victimes de ce qu’on appelle <strong>“l’effet Matilda”.</strong></p>   
-<p>Cette frise retrace le parcours de celles qui, malgré les obstacles et l’injustice, ont contribué à faire avancer la science . Leurs histoires rappellent que le génie n’a pas de genre, mais que la reconnaissance, elle, a longtemps été inégale.</p>
-
-
-</section>
-
-        <section class="articles-preview">
-            <h2 class="section-title">Liste des Matilda:</h2>
-            <section class="timeline-section">
-    <h2 class="section-title">Liste des Matilda:</h2>
-
-    <ul class="timeline">
-        
-        <li class="timeline__item">
-            <div class="timeline__content">
-                <h3 class="timeline__name">Rosalind<br>Franklin</h3>
-                <span class="timeline__date">(1920-1958)</span>
-            </div>
-            <div class="timeline__image">
-                <img src="../assets/img/Liste 1.webp" alt="Portrait de Rosalind Franklin">
-            </div>
-        </li>
-
-        <li class="timeline__item">
-            <div class="timeline__content">
-                <h3 class="timeline__name">Lise<br>Meitner</h3>
-                <span class="timeline__date">(1878-1968)</span>
-            </div>
-            <div class="timeline__image">
-                <img src="../assets/img/Liste 2.webp" alt="Portrait de Lise Meitner">
-            </div>
-        </li>
-
-        <li class="timeline__item">
-            <div class="timeline__content">
-                <h3 class="timeline__name">Nettie Maria<br>Stevens</h3>
-                <span class="timeline__date">(1861-1912)</span>
-            </div>
-            <div class="timeline__image">
-                <img src="../assets/img/Liste 3.webp" alt="Portrait de Nettie Maria Stevens">
-            </div>
-        </li>
-
-        <li class="timeline__item">
-            <div class="timeline__content">
-                <h3 class="timeline__name">Marthe<br>Gautier</h3>
-                <span class="timeline__date">(1917-2014)</span>
-            </div>
-            <div class="timeline__image">
-                <img src="../assets/img/Liste 4.webp" alt="Portrait de Marthe Gautier">
-            </div>
-        </li>
-
-        <li class="timeline__item">
-            <div class="timeline__content">
-                <h3 class="timeline__name">Jocelyn Bell<br>Burnell</h3>
-                <span class="timeline__date">(1943)</span>
-            </div>
-            <div class="timeline__image">
-                <img src="../assets/img/Liste 5.webp" alt="Portrait de Jocelyn Bell Burnell">
-            </div>
-        </li>
-
-    </ul>
-</section>
-            
+    </main>
 
     <footer class="footer">
         <div class="footer-grid">
@@ -177,9 +191,9 @@
             <div class="footer-section">
                 <h3>NOUS SUIVRE</h3>
                 <div class="social-icons">
-                    <img src="../assets/img/instagram.webp" alt="Instagram">
-                    <img src="../assets/img/facebook.webp" alt="Facebook">
-                    <img src="../assets/img/twitter.webp" alt="Twitter">
+                    <a href="#"><img src="../assets/img/instagram.webp" alt="Instagram"></a>
+                    <a href="#"><img src="../assets/img/facebook.webp" alt="Facebook"></a>
+                    <a href="#"><img src="../assets/img/twitter.webp" alt="Twitter"></a>
                 </div>
             </div>
         </div>
