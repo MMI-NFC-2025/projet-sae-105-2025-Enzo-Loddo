@@ -1,627 +1,265 @@
+
 /* =========================================
    1. VARIABLES & RESET
    ========================================= */
 :root {
     /* --- COULEURS --- */
-    --bg-color: #121212;
-    --card-bg: #1E1E1E;
-    --text-primary: #F5F5F5;
-    --text-secondary: #CCCCCC;
-    --accent-color: #FFFFFF;
-    --gold-color: #C6A87C;
+    --bg-color: #121212;       /* Noir fond page */
+    --footer-bg: #1B1B1B;      /* Noir fond footer */
+    --text-primary: #F5F5F5;   /* Blanc cassé */
+    --text-secondary: #CCCCCC; /* Gris clair */
+    --gold-color: #C6A87C;     /* Doré */
+    --white: #FFFFFF;
     
     /* --- TYPOGRAPHIE --- */
     --font-title: 'Space Mono', 'Courier New', monospace;
     --font-body: 'Inconsolata', 'Courier New', monospace;
 
     /* --- ESPACEMENTS --- */
-    --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 4rem;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s;
-}
-
-ul {
-    list-style: none;
-}
-
-img, video {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; height: auto; }
 
 /* =========================================
-   2. HEADER & MENU
+   2. TYPOGRAPHIE & UTILITAIRES
    ========================================= */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--spacing-sm) var(--spacing-md);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: #242424; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform: uppercase; }
+
+/* Titre principal */
+.page-title { text-align: center; margin: 3rem 0; }
+.page-title h1 { font-size: 2.5rem; letter-spacing: 2px; }
+
+/* Blocs de texte standards */
+.text-block {
+    max-width: 800px; margin: 2rem auto; padding: 0 1rem;
+    text-align: left; font-size: 1rem;
 }
 
-.header__logo img {
-    width: 50px;
-    height: auto;
+/* Texte doré */
+.gold-text { color: var(--gold-color); font-weight: bold; }
+
+/* Légendes (sous photos) */
+.caption {
+    font-size: 0.85rem; text-align: center; color: var(--text-secondary);
+    margin-top: 1rem; font-style: italic; max-width: 600px; margin-left: auto; margin-right: auto;
 }
 
-.header__right {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.lang-switch {
-    font-family: var(--font-body);
-    color: var(--text-primary);
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.lang-switch:hover {
-    text-decoration: underline;
-}
-
-.menu-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 35px;
-    height: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    z-index: 1100;
-}
-
-.menu-button span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: var(--text-primary);
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-.menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--bg-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1050;
-}
-
-.menu:not([hidden]), .menu.is-active {
-    transform: translateX(0);
-}
-
-.menu ul {
-    text-align: center;
-}
-
-.menu ul li {
-    margin: var(--spacing-md) 0;
-}
-
-.menu a {
-    font-family: var(--font-title);
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.menu a:hover {
-    color: var(--gold-color);
-    text-decoration: underline;
-}
-
-/* =========================================
-   3. TYPOGRAPHIE & STYLE GLOBAL
-   ========================================= */
-h1, h2, h3 {
-    font-family: var(--font-title);
-    font-weight: normal;
-    text-transform: uppercase;
-}
-
-.section-title {
-    font-size: 2rem;
-    text-align: center;
-    margin: var(--spacing-lg) 0 var(--spacing-md);
-    position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.section-title--underlined {
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 5px;
-}
-
+/* Trait de séparation (Ligne blanche fine) */
 .separator-line {
     width: 100%;
     height: 1px;
-    background-color: var(--accent-color);
+    background-color: var(--white);
     opacity: 0.3;
-    margin: var(--spacing-lg) 0;
-}
-
-/* Pour le texte doré (Effet Matilda) */
-.gold-text {
-    color: var(--gold-color);
-    font-weight: bold;
+    margin: 4rem 0; /* Espace vertical autour du trait */
 }
 
 /* =========================================
-   4. PAGE INDEX : HERO & CAROUSELS
+   3. HEADER & MENU
    ========================================= */
-.hero {
-    text-align: center;
-    padding: var(--spacing-md) var(--spacing-sm);
+.header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 2rem;
+    background-color: #242424;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
-.hero__title {
-    font-size: 2.2rem;
-    line-height: 1.3;
-    margin-bottom: var(--spacing-md);
-}
+.header__logo img { width: 50px; }
+.header__right { display: flex; align-items: center; gap: 2rem; }
 
-.hero__image img {
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    filter: grayscale(100%);
-    border-radius: 4px;
-}
+.lang-switch { font-family: var(--font-title); font-weight: bold; font-size: 1rem; }
+.lang-switch:hover { color: var(--gold-color); }
 
-.intro-meitner, .articles-section {
-    padding: 0 var(--spacing-sm);
+/* Bouton Burger */
+.menu-button {
+    background: none; border: none; cursor: pointer;
+    width: 30px; height: 20px; position: relative; z-index: 1100;
 }
-
-.intro__text {
-    text-align: center;
-    font-size: 1rem;
-    max-width: 600px;
-    margin: 0 auto var(--spacing-md);
-    color: var(--text-secondary);
-}
-
-.carousel {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-}
-
-.carousel__container {
-    display: flex;
-    gap: var(--spacing-md);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: var(--spacing-sm);
-    -webkit-overflow-scrolling: touch; 
-}
-
-.carousel__container::-webkit-scrollbar {
-    display: none; 
-}
-
-.carousel__item, .card {
-    flex: 0 0 70%;
-    scroll-snap-align: center;
-    max-width: 300px;
-}
-
-/* Styles Portraits (Ronds) */
-.carousel--portraits .carousel__item img {
-    border-radius: 50%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    object-position: center top;
-    width: 100%;
-    max-width: 280px;
-    margin: 0 auto;
-    border: 2px solid transparent;
-    display: block;
-}
-.carousel--portraits .carousel__item:nth-child(even) img {
-    border-color: var(--gold-color);
-}
-
-/* Styles Articles (Rectangles avec bordure blanche sur l'image) */
-.carousel--articles .card--article {
-    border: none;
-    background: transparent;
-    padding: 0;
-    width: 260px;
-    min-width: 260px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.carousel--articles .card__title {
-    font-size: 1.1rem;
-    text-align: center;
-    margin-bottom: 10px;
-    background: transparent;
-    border: none;
-    color: var(--text-primary);
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.carousel--articles .card__image img {
-    width: 100%;
-    height: 380px;
-    object-fit: cover; 
-    border: 2px solid #FFFFFF; 
-    border-radius: 20px;
-    display: block;
-    background-color: #000; 
-}
-
-.carousel__scrollbar {
-    width: 100px;
-    height: 4px;
-    background-color: #333;
-    margin: 0 auto;
-    border-radius: 2px;
-    position: relative;
-    margin-top: 10px;
-}
-
-.carousel__scrollbar-thumb {
-    width: 50%;
-    height: 100%;
+.menu-button span {
+    display: block; width: 100%; height: 2px;
     background-color: var(--text-primary);
-    border-radius: 2px;
+    position: absolute; left: 0; transition: 0.3s;
 }
-/* --- Style pour les blocs de texte simples --- */
-.text-block {
-    text-align: center;       /* Centre le texte horizontalement */
-    margin: 2rem auto;        /* Ajoute de l'espace en haut/bas et centre le bloc */
-    max-width: 800px;         /* Limite la largeur pour que les lignes ne soient pas trop longues sur grand écran */
-    padding: 0 1rem;          /* Ajoute un peu d'espace sur les côtés sur mobile */
-    font-size: 1.05rem;       /* Légèrement plus grand pour la mise en valeur */
-    line-height: 1.6;
+.menu-button span:nth-child(1) { top: 0; }
+.menu-button span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.menu-button span:nth-child(3) { bottom: 0; }
+
+/* Menu Plein Écran */
+.menu {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: var(--bg-color);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    transform: translateX(100%); transition: transform 0.4s; z-index: 1050;
 }
+.menu:not([hidden]), .menu.is-active { transform: translateX(0); }
+.menu li { margin: 2rem 0; text-align: center; }
+.menu a { font-family: var(--font-title); font-size: 1.5rem; text-transform: uppercase; }
+.menu a:hover { color: var(--gold-color); }
+
 /* =========================================
-   5. PAGE BIOGRAPHIE (LISE MEITNER)
+   4. SECTIONS BIOGRAPHIE
    ========================================= */
 
-/* A. Centrer la photo principale */
-.bio-portrait {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto 2rem auto;
-    width: 100%;
+/* --- A. HERO (Photo + Infos) --- */
+.bio-header {
+    display: flex; justify-content: center; align-items: flex-start;
+    gap: 4rem; max-width: 1100px; margin: 2rem auto 4rem; padding: 0 1rem;
 }
 
+.bio-portrait { flex: 0 0 400px; }
 .bio-portrait img {
-    max-width: 300px; 
-    width: 80%;
-    border: 3px solid #FFF;
-    border-radius: 20px;
+    width: 100%; border: 4px solid var(--white);
+    border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
-/* B. Centrer le bloc "Nom, Naissance..." */
 .bio-data {
-    max-width: 400px; 
-    margin: 0 auto;
-    text-align: left;
-    padding-left: 20px; 
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-primary);
+    flex: 1; list-style: none; font-size: 1.2rem;
+    line-height: 2.2; margin-top: 1rem;
 }
+.bio-data strong { color: var(--white); font-family: var(--font-title); margin-right: 10px; }
 
-/* C. MISE EN PAGE : TEXTE GAUCHE / IMAGE DROITE (Ta demande principale) */
+/* --- B. SPLIT (Texte + Image) --- */
 .bio-split {
-    display: flex;              /* Active Flexbox */
-    justify-content: space-between; 
-    align-items: center;        
-    gap: 3rem;                  /* Espace entre texte et image */
-    margin: 2rem auto;          
-    padding: 0 1rem;
-    max-width: 1100px;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 3rem; max-width: 1100px; margin: 4rem auto; padding: 0 1rem;
 }
+.bio-text { flex: 1; font-size: 1.1rem; text-align: left; }
+.bio-text p { margin-bottom: 1.5rem; }
 
-.bio-text {
-    flex: 1;                    /* Le texte prend toute la place dispo */
-    text-align: left;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-.bio-text p {
-    margin-bottom: 1.5rem;
-}
-
-.bio-image-right {
-    flex: 0 0 40%;              /* L'image prend 40% de la largeur */
-    display: flex;
-    justify-content: flex-end;
-}
-
+.bio-image-right { flex: 0 0 400px; }
 .bio-image-right img {
-    width: 100%;
-    max-width: 350px;
-    border: 3px solid var(--gold-color);
-    border-radius: 20px;
-    object-fit: cover;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+   
 }
 
-/* D. Centrer la section Otto Hahn */
-.focus-otto {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 3rem 0;
+/* --- C. FOCUS OTTO HAHN --- */
+.focus-otto { text-align: center; margin: 4rem 0; }
+.focus-otto img {
+    max-width: 350px; margin: 0 auto;
+   
 }
 
-.otto-frame {
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
-}
+/* =========================================
+   5. TIMELINE MATILDA
+   ========================================= */
+.matilda-timeline { padding: 0 1rem; margin-top: 4rem; }
+.matilda-timeline h2 { text-align: center; margin-bottom: 3rem; font-size: 2rem; }
 
-.otto-frame img {
-    border: 2px solid var(--gold-color);
-    border-radius: 20px;
-    max-width: 100%;
-    width: 350px;
-}
-
-.caption {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-    font-size: 0.9rem;
-    color: #CCCCCC;
-}
-
-/* E. Timeline "Matilda" (Style corrigé pour correspondre à ton HTML) */
-.matilda-timeline {
-    padding: 0 1rem;
-    margin-top: var(--spacing-lg);
-}
-
+/* Conteneur et Ligne verticale */
 .timeline-container {
-    position: relative;
-    padding-left: 20px;
-    border-left: 2px solid #FFF; /* La ligne verticale */
-    padding-bottom: 50px;
+    border-left: 2px solid var(--white);
+    padding-left: 30px; margin-left: 20px; padding-bottom: 50px;
+    max-width: 800px; margin: 0 auto; position: relative;
 }
-
-/* La flèche en bas de la timeline */
-.timeline-container::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: -6px;
-    width: 10px;
-    height: 10px;
-    border-right: 2px solid #FFF;
-    border-bottom: 2px solid #FFF;
+.timeline-container::after { /* Flèche bas */
+    content: ''; position: absolute; bottom: 0; left: -6px;
+    width: 10px; height: 10px;
+    border-right: 2px solid var(--white); border-bottom: 2px solid var(--white);
     transform: rotate(45deg);
 }
 
 .timeline-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-    max-width: 500px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 3rem;
 }
 
-/* La carte grise (Nom/Date) */
+/* Carte Nom/Date */
 .timeline-card {
-    background-color: #D9D9D9;
-    color: #000;
-    padding: 10px;
-    border-radius: 8px;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    text-align: center;
-    width: 140px;
+    background-color: #D9D9D9; color: #000;
+    width: 180px; padding: 1rem; border-radius: 10px;
+    font-family: var(--font-title); text-align: center;
     position: relative;
-    margin-left: 20px;
+}
+.timeline-card::before { /* Trait connecteur */
+    content: ''; position: absolute; left: -32px; top: 50%;
+    width: 32px; height: 2px; background: var(--white);
 }
 
-/* Le trait horizontal vers la carte */
-.timeline-card::before {
-    content: '';
-    position: absolute;
-    left: -42px; /* Connecte à la ligne verticale */
-    top: 50%;
-    width: 42px;
-    height: 2px;
-    background-color: #FFF;
-}
-
-/* L'image ronde à droite */
-.timeline-img {
-    width: 100px;
-    height: 100px;
-    flex-shrink: 0;
-}
-
+/* Image ronde */
+.timeline-img { width: 120px; height: 120px; flex-shrink: 0; }
 .timeline-img img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--gold-color);
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: 50%; border: 2px solid var(--gold-color);
 }
 
 /* =========================================
    6. FOOTER
    ========================================= */
 .footer {
-    background-color: #000;
-    padding: var(--spacing-lg) var(--spacing-md);
-    margin-top: var(--spacing-lg);
-    font-size: 0.9rem;
-    color: var(--text-primary);
+    background-color: var(--footer-bg); color: var(--text-primary);
+    padding: 3rem 1.5rem; margin-top: 4rem;
+    font-family: 'Courier New', Courier, monospace;
 }
-
-.footer-grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-lg);
-}
+.footer-container { max-width: 600px; margin: 0 auto; }
 
 .footer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 3rem;
 }
 
-.footer-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
+.footer-nav { display: flex; flex-direction: column; gap: 1rem; }
+.footer-nav a { color: var(--white); font-size: 1.1rem; }
+.footer-nav a:hover { text-decoration: underline; }
 
-.footer-nav a {
-    font-family: var(--font-title);
-    color: var(--text-primary);
-    font-weight: bold;
-    text-transform: capitalize;
-    font-size: 1.1rem;
-}
+.footer-logo img { width: 100px; height: auto; }
 
-.footer-deco img {
-    width: 60px;
-    opacity: 0.8;
-}
-
+.footer-section { margin-bottom: 2.5rem; }
 .footer-section h3 {
-    font-size: 0.9rem;
-    color: var(--text-primary);
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    letter-spacing: 1px;
+    font-size: 1.1rem; margin-bottom: 0.5rem;
+    font-weight: normal; text-transform: none;
 }
-
 .footer-section p {
-    color: var(--text-secondary);
-    line-height: 1.6;
+    font-size: 0.95rem; line-height: 1.5; color: var(--text-secondary); max-width: 400px;
 }
 
-.social-icons {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.social-icons img {
-    width: 32px;
-    height: 32px;
-    filter: invert(1); 
-    transition: transform 0.3s;
-}
-
-.social-icons img:hover {
-    transform: scale(1.1);
-}
-
-.bouton-haut {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 0.3s;
-    z-index: 900;
-}
-
-.bouton-haut:hover {
-    opacity: 1;
-}
-
-.bouton-haut__icone {
-    width: 40px;
-    filter: invert(1); 
-    transform: rotate(-90deg);
-}
+.social-icons { display: flex; gap: 1rem; margin-top: 0.5rem; }
+.social-icons img { width: 40px; height: 40px; filter: invert(0); }
 
 /* =========================================
-   7. MEDIA QUERIES (TABLETTE & ORDI)
+   7. RESPONSIVE (MOBILE)
    ========================================= */
-@media (min-width: 768px) {
-    .header {
-        padding: var(--spacing-md) var(--spacing-lg);
-    }
-
-    .hero__title {
-        font-size: 4rem;
-    }
-
-    .carousel__item, .card {
-        flex: 0 0 300px;
-    }
-
-    .footer-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: var(--spacing-md);
-    }
-}
-
-/* Mobile responsive pour le bloc Texte/Image */
 @media (max-width: 768px) {
-    .bio-split {
-        flex-direction: column; /* Passe en vertical sur mobile */
-        gap: 1.5rem;
-    }
+    
+    /* Global Mobile */
+    .page-title h1 { font-size: 2.5rem; }
 
-    .bio-image-right {
-        flex: 0 0 auto;
-        width: 100%;
-        justify-content: center;
+    /* Hero Bio : Empilé */
+    .bio-header { flex-direction: column; align-items: center; text-align: center; gap: 2rem; }
+    .bio-portrait { flex: 0 0 auto; width: 280px; }
+    .bio-data { text-align: center; font-size: 1rem; }
+
+    /* Split Bio : Empilé (Image en bas) */
+    .bio-split { flex-direction: column; align-items: center; gap: 2rem; }
+    .bio-image-right { flex: 0 0 auto; width: 100%; max-width: 300px; }
+    .bio-text { text-align: left; }
+
+    /* Timeline Mobile (Style Vertical + Horizontal) */
+    .timeline-container {
+        border-left: 2px solid var(--white); padding-left: 20px;
+        width: fit-content; margin: 0 auto; padding-bottom: 30px;
     }
+    .timeline-item {
+        justify-content: flex-start; gap: 15px; margin-bottom: 2rem; width: 100%;
+    }
+    .timeline-card {
+        width: 130px; padding: 10px 5px; font-size: 0.8rem; border-radius: 10px; margin: 0;
+    }
+    .timeline-card::before { width: 22px; left: -22px; }
+    .timeline-img { width: 85px; height: 85px; }
 }
