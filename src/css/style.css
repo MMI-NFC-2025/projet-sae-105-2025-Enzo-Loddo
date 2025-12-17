@@ -263,3 +263,79 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
     .timeline-card::before { width: 22px; left: -22px; }
     .timeline-img { width: 85px; height: 85px; }
 }
+/* =========================================
+   8. PAGE CONTACT (Formulaire)
+   ========================================= */
+
+.form-section {
+    padding: 0 1rem;
+    margin-bottom: 4rem;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #1B1B1B; /* Fond légèrement plus clair que le noir pur */
+    border-radius: 20px;       /* Coins arrondis du bloc */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Ombre portée */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+    font-family: var(--font-title); /* Police "Machine à écrire" */
+    font-size: 1rem;
+}
+
+/* Style des champs (Input & Textarea) */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #D9D9D9;       /* Gris clair */
+    border: 3px solid var(--gold-color); /* Bordure dorée épaisse */
+    border-radius: 10px;             /* Coins arrondis */
+    font-family: var(--font-title);
+    font-size: 1rem;
+    color: #333;                     /* Texte gris foncé */
+    outline: none;
+}
+
+/* Placeholder (Texte d'exemple) */
+::placeholder {
+    color: #777;
+    opacity: 0.8;
+}
+
+/* Zone de texte plus haute */
+.form-group textarea {
+    height: 150px;
+    resize: vertical; /* Permet de redimensionner verticalement uniquement */
+}
+
+/* Bouton Envoyer */
+.btn-submit {
+    display: inline-block;
+    background-color: #121212; /* Fond noir */
+    color: var(--white);
+    padding: 10px 25px;
+    border: 1px solid #333;
+    border-radius: 20px;
+    font-family: var(--font-title);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 1rem;
+}
+
+.btn-submit:hover {
+    background-color: #333;
+    border-color: var(--gold-color);
+}
