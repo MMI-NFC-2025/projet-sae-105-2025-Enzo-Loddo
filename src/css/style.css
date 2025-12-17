@@ -1,6 +1,6 @@
 
 /* =========================================
-   1. VARIABLES & RESET
+   1. VARIABLES & RESET (LE SOCLE)
    ========================================= */
 :root {
     /* --- COULEURS --- */
@@ -8,17 +8,12 @@
     --footer-bg: #1B1B1B;      /* Noir fond footer */
     --text-primary: #F5F5F5;   /* Blanc cassé */
     --text-secondary: #CCCCCC; /* Gris clair */
-    --gold-color: #C6A87C;     /* Doré */
+    --gold-color: #C6A87C;     /* Doré (Accents) */
     --white: #FFFFFF;
     
     /* --- TYPOGRAPHIE --- */
     --font-title: 'Space Mono', 'Courier New', monospace;
     --font-body: 'Inconsolata', 'Courier New', monospace;
-
-    /* --- ESPACEMENTS --- */
-    --spacing-sm: 1rem;
-    --spacing-md: 2rem;
-    --spacing-lg: 4rem;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,6 +25,15 @@ body {
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* --- SCROLLBAR (Correction : Barre Grise par défaut pour la page) --- */
+body::-webkit-scrollbar {
+    width: 12px;
+}
+body::-webkit-scrollbar-thumb {
+    background-color: #555; /* Gris discret */
+    border-radius: 0;
 }
 
 a { text-decoration: none; color: inherit; transition: 0.3s; }
@@ -45,6 +49,14 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
 .page-title { text-align: center; margin: 3rem 0; }
 .page-title h1 { font-size: 2.5rem; letter-spacing: 2px; }
 
+/* Titre souligné (utilisé sur l'accueil) */
+.section-title--underlined {
+    display: inline-block;
+    border-bottom: 2px solid var(--white);
+    padding-bottom: 5px;
+    margin-bottom: 1.5rem;
+}
+
 /* Blocs de texte standards */
 .text-block {
     max-width: 800px; margin: 2rem auto; padding: 0 1rem;
@@ -57,16 +69,14 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
 /* Légendes (sous photos) */
 .caption {
     font-size: 0.85rem; text-align: center; color: var(--text-secondary);
-    margin-top: 1rem; font-style: italic; max-width: 600px; margin-left: auto; margin-right: auto;
+    margin-top: 1rem; font-style: italic; max-width: 600px; margin: 1rem auto;
 }
 
-/* Trait de séparation (Ligne blanche fine) */
+/* Trait de séparation */
 .separator-line {
-    width: 100%;
-    height: 1px;
-    background-color: var(--white);
-    opacity: 0.3;
-    margin: 4rem 0; /* Espace vertical autour du trait */
+    width: 100%; height: 1px;
+    background-color: var(--white); opacity: 0.3;
+    margin: 4rem 0;
 }
 
 /* =========================================
@@ -114,7 +124,59 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
 .menu a:hover { color: var(--gold-color); }
 
 /* =========================================
-   4. SECTIONS BIOGRAPHIE
+   4. COMPOSANTS GLOBAUX (Carousels & Cartes)
+   ========================================= */
+
+/* --- CAROUSEL (Commun Films & Accueil) --- */
+.carousel-section { padding: 0 1rem; margin-bottom: 4rem; }
+
+.carousel-container {
+    display: flex; gap: 2rem;
+    overflow-x: auto; /* Scroll horizontal */
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+}
+
+/* Correction : Barre Dorée UNIQUEMENT pour le carousel */
+.carousel-container::-webkit-scrollbar { height: 5px; }
+.carousel-container::-webkit-scrollbar-thumb {
+    background-color: var(--gold-color); border-radius: 4px;
+}
+
+/* --- CARTES ARTICLES & FILMS --- */
+/* Style commun pour les cartes rectangulaires */
+.film-card, .article-card {
+    flex: 0 0 280px; /* Largeur fixe */
+    scroll-snap-align: center;
+    border: 1px solid var(--gold-color);
+    border-radius: 30px;
+    padding: 1.5rem;
+    text-align: center;
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 450px;
+}
+
+/* Titres des cartes */
+.film-card h3, .article-card h3 {
+    font-size: 1rem; margin-bottom: 1rem;
+    color: var(--white); font-weight: bold;
+}
+
+/* Images dans les cartes */
+.film-card-img img, .article-img img {
+    border-radius: 10px; width: 100%; height: 250px; object-fit: cover; margin-bottom: 1rem;
+}
+
+.film-meta { font-size: 0.9rem; font-weight: bold; color: var(--white); }
+
+/* Spécifique Accueil : Hover sur article */
+.article-card { height: 400px; transition: transform 0.3s; }
+.article-card:hover { transform: translateY(-5px); background-color: #1a1a1a; }
+.article-img img { height: auto; max-height: 280px; }
+
+
+/* =========================================
+   5. SECTIONS SPÉCIFIQUES (Bio & Index)
    ========================================= */
 
 /* --- A. HERO (Photo + Infos) --- */
@@ -135,63 +197,91 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
 }
 .bio-data strong { color: var(--white); font-family: var(--font-title); margin-right: 10px; }
 
-/* --- B. SPLIT (Texte + Image) --- */
-.bio-split {
+/* --- B. SPLIT (Texte + Image) & FILM SPLIT --- */
+.bio-split, .film-split {
     display: flex; justify-content: space-between; align-items: flex-start;
     gap: 3rem; max-width: 1100px; margin: 4rem auto; padding: 0 1rem;
 }
-.bio-text { flex: 1; font-size: 1.1rem; text-align: left; }
-.bio-text p { margin-bottom: 1.5rem; }
 
+/* Texte */
+.bio-text, .film-info { flex: 1; font-size: 1.1rem; text-align: left; }
+.bio-text p, .film-info p { margin-bottom: 1.5rem; }
+
+/* Images Droite/Gauche */
 .bio-image-right { flex: 0 0 400px; }
-.bio-image-right img {
-   
+.bio-image-right img { width: 100%; border: 3px solid var(--gold-color); border-radius: 20px; }
+
+.film-poster { flex: 0 0 300px; }
+.film-poster img { width: 100%; border-radius: 5px; box-shadow: 0 5px 20px rgba(0,0,0,0.6); }
+
+/* --- C. FOCUS (Otto Hahn / Groupe) --- */
+.focus-otto { text-align: center; margin: 4rem 0; }
+.focus-otto img, .otto-frame img {
+    max-width: 350px; margin: 0 auto;
+    border: 2px solid var(--gold-color); border-radius: 20px;
 }
 
-/* --- C. FOCUS OTTO HAHN --- */
-.focus-otto { text-align: center; margin: 4rem 0; }
-.focus-otto img {
-    max-width: 350px; margin: 0 auto;
-   
+/* --- D. HERO ACCUEIL --- */
+.hero-image { max-width: 800px; margin: 0 auto 3rem; padding: 0 1rem; }
+.hero-image img { border-radius: 4px; filter: grayscale(100%); width: 100%; }
+
+/* --- E. PORTRAITS RONDS (Accueil) --- */
+.carousel-portraits { padding: 2rem 0; }
+.portrait-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* L'image remplit le rond */
+    object-position: center; /* <--- AJOUTE CECI : Centre l'image dans le cadre */
+    border-radius: 50%;      /* Rond parfait */
+    filter: grayscale(100%);
+    transition: 0.3s;
+}
+
+.portrait-item:hover img { filter: grayscale(0%); border: 3px solid var(--gold-color); }
+
+/* Barre de progression déco */
+.scroll-bar {
+    width: 100px; height: 4px; background-color: #333;
+    margin: 0 auto 4rem; border-radius: 2px;
+}
+.scroll-thumb { width: 50%; height: 100%; background-color: var(--white); border-radius: 2px; }
+
+/* --- F. VIDEO CONTAINER (Films) --- */
+.video-container {
+    max-width: 800px; height: 400px; margin: 3rem auto;
+    background-color: #000; border: 2px solid var(--gold-color);
 }
 
 /* =========================================
-   5. TIMELINE MATILDA
+   6. TIMELINE MATILDA
    ========================================= */
 .matilda-timeline { padding: 0 1rem; margin-top: 4rem; }
 .matilda-timeline h2 { text-align: center; margin-bottom: 3rem; font-size: 2rem; }
 
-/* Conteneur et Ligne verticale */
 .timeline-container {
     border-left: 2px solid var(--white);
     padding-left: 30px; margin-left: 20px; padding-bottom: 50px;
     max-width: 800px; margin: 0 auto; position: relative;
 }
-.timeline-container::after { /* Flèche bas */
+.timeline-container::after {
     content: ''; position: absolute; bottom: 0; left: -6px;
     width: 10px; height: 10px;
     border-right: 2px solid var(--white); border-bottom: 2px solid var(--white);
     transform: rotate(45deg);
 }
 
-.timeline-item {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 3rem;
-}
+.timeline-item { display: flex; align-items: center; justify-content: space-between; margin-bottom: 3rem; }
 
-/* Carte Nom/Date */
 .timeline-card {
     background-color: #D9D9D9; color: #000;
     width: 180px; padding: 1rem; border-radius: 10px;
-    font-family: var(--font-title); text-align: center;
-    position: relative;
+    font-family: var(--font-title); text-align: center; position: relative;
 }
-.timeline-card::before { /* Trait connecteur */
+.timeline-card::before {
     content: ''; position: absolute; left: -32px; top: 50%;
     width: 32px; height: 2px; background: var(--white);
 }
 
-/* Image ronde */
 .timeline-img { width: 120px; height: 120px; flex-shrink: 0; }
 .timeline-img img {
     width: 100%; height: 100%; object-fit: cover;
@@ -199,7 +289,39 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
 }
 
 /* =========================================
-   6. FOOTER
+   7. PAGE CONTACT (Formulaire)
+   ========================================= */
+.form-section { padding: 0 1rem; margin-bottom: 4rem; }
+
+.form-container {
+    max-width: 600px; margin: 0 auto; padding: 2rem;
+    background-color: #1B1B1B; border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.form-group { margin-bottom: 1.5rem; text-align: left; }
+.form-group label {
+    display: block; margin-bottom: 0.5rem; color: var(--white);
+    font-family: var(--font-title); font-size: 1rem;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%; padding: 12px 15px;
+    background-color: #D9D9D9; border: 3px solid var(--gold-color);
+    border-radius: 10px; font-family: var(--font-title); font-size: 1rem;
+    color: #333; outline: none;
+}
+.form-group textarea { height: 150px; resize: vertical; }
+
+.btn-submit {
+    display: inline-block; background-color: #121212; color: var(--white);
+    padding: 10px 25px; border: 1px solid #333; border-radius: 20px;
+    font-family: var(--font-title); font-size: 1rem; cursor: pointer; transition: 0.3s; margin-top: 1rem;
+}
+.btn-submit:hover { background-color: #333; border-color: var(--gold-color); }
+
+/* =========================================
+   8. FOOTER
    ========================================= */
 .footer {
     background-color: var(--footer-bg); color: var(--text-primary);
@@ -208,10 +330,7 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
 }
 .footer-container { max-width: 600px; margin: 0 auto; }
 
-.footer-top {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    margin-bottom: 3rem;
-}
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3rem; }
 
 .footer-nav { display: flex; flex-direction: column; gap: 1rem; }
 .footer-nav a { color: var(--white); font-size: 1.1rem; }
@@ -221,24 +340,22 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
 
 .footer-section { margin-bottom: 2.5rem; }
 .footer-section h3 {
-    font-size: 1.1rem; margin-bottom: 0.5rem;
-    font-weight: normal; text-transform: none;
+    font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: normal; text-transform: none;
 }
-.footer-section p {
-    font-size: 0.95rem; line-height: 1.5; color: var(--text-secondary); max-width: 400px;
-}
+.footer-section p { font-size: 0.95rem; line-height: 1.5; color: var(--text-secondary); max-width: 400px; }
 
 .social-icons { display: flex; gap: 1rem; margin-top: 0.5rem; }
 .social-icons img { width: 40px; height: 40px; filter: invert(0); }
 
 /* =========================================
-   7. RESPONSIVE (MOBILE)
+   9. RESPONSIVE (VERSION MOBILE)
    ========================================= */
 @media (max-width: 768px) {
     
-    /* Global Mobile */
+    /* --- TYPO & HEADER --- */
     .page-title h1 { font-size: 2.5rem; }
 
+    /* --- BIO PAGE --- */
     /* Hero Bio : Empilé */
     .bio-header { flex-direction: column; align-items: center; text-align: center; gap: 2rem; }
     .bio-portrait { flex: 0 0 auto; width: 280px; }
@@ -249,7 +366,17 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
     .bio-image-right { flex: 0 0 auto; width: 100%; max-width: 300px; }
     .bio-text { text-align: left; }
 
-    /* Timeline Mobile (Style Vertical + Horizontal) */
+    /* --- FILMS PAGE --- */
+    .film-split { flex-direction: column; text-align: left; gap: 2rem; }
+    .film-poster { flex: 0 0 auto; width: 100%; max-width: 300px; }
+    .video-container { height: 250px; margin: 2rem 1rem; }
+    .film-card, .article-card { flex: 0 0 240px; min-height: 400px; }
+    
+    /* --- ACCUEIL --- */
+    .portrait-item { flex: 0 0 150px; height: 150px; }
+    .article-card { flex: 0 0 220px; height: 350px; }
+
+    /* --- TIMELINE (Style Vertical + Horizontal Maquette) --- */
     .timeline-container {
         border-left: 2px solid var(--white); padding-left: 20px;
         width: fit-content; margin: 0 auto; padding-bottom: 30px;
@@ -262,212 +389,4 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
     }
     .timeline-card::before { width: 22px; left: -22px; }
     .timeline-img { width: 85px; height: 85px; }
-}
-/* =========================================
-   8. PAGE CONTACT (Formulaire)
-   ========================================= */
-
-.form-section {
-    padding: 0 1rem;
-    margin-bottom: 4rem;
-}
-
-.form-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: #1B1B1B; /* Fond légèrement plus clair que le noir pur */
-    border-radius: 20px;       /* Coins arrondis du bloc */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Ombre portée */
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--white);
-    font-family: var(--font-title); /* Police "Machine à écrire" */
-    font-size: 1rem;
-}
-
-/* Style des champs (Input & Textarea) */
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px 15px;
-    background-color: #D9D9D9;       /* Gris clair */
-    border: 3px solid var(--gold-color); /* Bordure dorée épaisse */
-    border-radius: 10px;             /* Coins arrondis */
-    font-family: var(--font-title);
-    font-size: 1rem;
-    color: #333;                     /* Texte gris foncé */
-    outline: none;
-}
-
-/* Placeholder (Texte d'exemple) */
-::placeholder {
-    color: #777;
-    opacity: 0.8;
-}
-
-/* Zone de texte plus haute */
-.form-group textarea {
-    height: 150px;
-    resize: vertical; /* Permet de redimensionner verticalement uniquement */
-}
-
-/* Bouton Envoyer */
-.btn-submit {
-    display: inline-block;
-    background-color: #121212; /* Fond noir */
-    color: var(--white);
-    padding: 10px 25px;
-    border: 1px solid #333;
-    border-radius: 20px;
-    font-family: var(--font-title);
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 1rem;
-}
-
-.btn-submit:hover {
-    background-color: #333;
-    border-color: var(--gold-color);
-}
-/* =========================================
-   9. PAGE FILMS
-   ========================================= */
-
-/* --- CAROUSEL --- */
-.carousel-section {
-    padding: 0 1rem;
-    margin-bottom: 4rem;
-}
-
-.carousel-container {
-    display: flex;
-    gap: 2rem;
-    overflow-x: auto; /* Permet le scroll horizontal */
-    padding-bottom: 1rem;
-    scroll-snap-type: x mandatory; /* Magnétisme du scroll */
-}
-
-/* Masquer la barre de défilement (optionnel) */
-.carousel-container::-webkit-scrollbar {
-    height: 8px;
-}
-.carousel-container::-webkit-scrollbar-thumb {
-    background-color: var(--gold-color);
-    border-radius: 4px;
-}
-
-/* La Carte Film */
-.film-card {
-    flex: 0 0 280px; /* Largeur fixe de la carte */
-    scroll-snap-align: center;
-    border: 1px solid var(--gold-color);
-    border-radius: 30px; /* Très arrondi */
-    padding: 1.5rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 450px;
-}
-
-.film-card h3 {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    color: var(--white);
-    font-weight: bold;
-}
-
-.film-card-img img {
-    border-radius: 10px;
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    margin-bottom: 1rem;
-}
-
-.film-meta {
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: var(--white);
-}
-
-/* --- SECTION FILM SPLIT (Oppenheimer) --- */
-/* Affiche Gauche / Texte Droite */
-.film-split {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-    max-width: 900px;
-    margin: 4rem auto;
-    padding: 0 1rem;
-}
-
-.film-poster {
-    flex: 0 0 300px; /* Largeur de l'affiche */
-}
-
-.film-poster img {
-    width: 100%;
-    border-radius: 5px; /* Coins peu arrondis style affiche */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.6);
-}
-
-.film-info {
-    flex: 1;
-    text-align: left;
-    font-size: 1.1rem;
-    font-family: var(--font-body);
-}
-
-.film-info p {
-    margin-bottom: 0.8rem;
-}
-
-/* --- VIDEO CONTAINER --- */
-.video-container {
-    max-width: 800px;
-    height: 400px;
-    margin: 3rem auto;
-    background-color: #000;
-    border: 2px solid var(--gold-color); /* Bordure dorée */
-    /* Tu pourras mettre une <iframe> Youtube dedans plus tard */
-}
-
-/* --- RESPONSIVE MOBILE --- */
-@media (max-width: 768px) {
-    
-    /* Carousel : cartes un peu plus petites */
-    .film-card {
-        flex: 0 0 240px;
-        min-height: 400px;
-    }
-
-    /* Film Split : On empile (Affiche au-dessus, Texte en dessous) */
-    .film-split {
-        flex-direction: column;
-        text-align: left;
-        gap: 2rem;
-    }
-
-    .film-poster {
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .video-container {
-        height: 250px; /* Moins haut sur mobile */
-        margin: 2rem 1rem;
-    }
 }
