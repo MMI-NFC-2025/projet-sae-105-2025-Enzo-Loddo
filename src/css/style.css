@@ -339,3 +339,135 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
     background-color: #333;
     border-color: var(--gold-color);
 }
+/* =========================================
+   9. PAGE FILMS
+   ========================================= */
+
+/* --- CAROUSEL --- */
+.carousel-section {
+    padding: 0 1rem;
+    margin-bottom: 4rem;
+}
+
+.carousel-container {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto; /* Permet le scroll horizontal */
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory; /* Magnétisme du scroll */
+}
+
+/* Masquer la barre de défilement (optionnel) */
+.carousel-container::-webkit-scrollbar {
+    height: 8px;
+}
+.carousel-container::-webkit-scrollbar-thumb {
+    background-color: var(--gold-color);
+    border-radius: 4px;
+}
+
+/* La Carte Film */
+.film-card {
+    flex: 0 0 280px; /* Largeur fixe de la carte */
+    scroll-snap-align: center;
+    border: 1px solid var(--gold-color);
+    border-radius: 30px; /* Très arrondi */
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 450px;
+}
+
+.film-card h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+    font-weight: bold;
+}
+
+.film-card-img img {
+    border-radius: 10px;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.film-meta {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--white);
+}
+
+/* --- SECTION FILM SPLIT (Oppenheimer) --- */
+/* Affiche Gauche / Texte Droite */
+.film-split {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+}
+
+.film-poster {
+    flex: 0 0 300px; /* Largeur de l'affiche */
+}
+
+.film-poster img {
+    width: 100%;
+    border-radius: 5px; /* Coins peu arrondis style affiche */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+}
+
+.film-info {
+    flex: 1;
+    text-align: left;
+    font-size: 1.1rem;
+    font-family: var(--font-body);
+}
+
+.film-info p {
+    margin-bottom: 0.8rem;
+}
+
+/* --- VIDEO CONTAINER --- */
+.video-container {
+    max-width: 800px;
+    height: 400px;
+    margin: 3rem auto;
+    background-color: #000;
+    border: 2px solid var(--gold-color); /* Bordure dorée */
+    /* Tu pourras mettre une <iframe> Youtube dedans plus tard */
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    
+    /* Carousel : cartes un peu plus petites */
+    .film-card {
+        flex: 0 0 240px;
+        min-height: 400px;
+    }
+
+    /* Film Split : On empile (Affiche au-dessus, Texte en dessous) */
+    .film-split {
+        flex-direction: column;
+        text-align: left;
+        gap: 2rem;
+    }
+
+    .film-poster {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .video-container {
+        height: 250px; /* Moins haut sur mobile */
+        margin: 2rem 1rem;
+    }
+}
