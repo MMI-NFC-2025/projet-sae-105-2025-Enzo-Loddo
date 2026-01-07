@@ -82,6 +82,8 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
 /* =========================================
    3. HEADER & MENU
    ========================================= */
+
+/* --- HEADER FIXE (Barre de navigation classique) --- */
 .header {
     display: flex; justify-content: space-between; align-items: center;
     padding: 1rem 2rem;
@@ -96,7 +98,7 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
 .lang-switch { font-family: var(--font-title); font-weight: bold; font-size: 1rem; }
 .lang-switch:hover { color: var(--gold-color); }
 
-/* Bouton Burger */
+/* BOUTON BURGER (Pour ouvrir) */
 .menu-button {
     background: none; border: none; cursor: pointer;
     width: 30px; height: 20px; position: relative; z-index: 1100;
@@ -110,19 +112,73 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
 .menu-button span:nth-child(2) { top: 50%; transform: translateY(-50%); }
 .menu-button span:nth-child(3) { bottom: 0; }
 
-/* Menu Plein Écran */
+
+/* --- MENU PLEIN ÉCRAN (Overlay) --- */
 .menu {
     position: fixed; top: 0; left: 0;
     width: 100vw; height: 100vh;
-    background-color: var(--bg-color);
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    transform: translateX(100%); transition: transform 0.4s; z-index: 1050;
-}
-.menu:not([hidden]), .menu.is-active { transform: translateX(0); }
-.menu li { margin: 2rem 0; text-align: center; }
-.menu a { font-family: var(--font-title); font-size: 1.5rem; text-transform: uppercase; }
-.menu a:hover { color: var(--gold-color); }
+    background-color: var(--bg-color); /* Fond noir simple */
+    
+    /* AUCUNE IMAGE DE FOND ICI */
 
+    display: flex; flex-direction: column;
+    padding: 2rem;
+    
+    /* Animation d'ouverture */
+    transform: translateX(100%); 
+    transition: transform 0.4s ease-in-out;
+    z-index: 2000; /* Au-dessus de tout */
+}
+
+/* Classe ajoutée par JS pour ouvrir le menu */
+.menu.is-active { 
+    transform: translateX(0); 
+}
+
+/* EN-TÊTE DU MENU (Logo + Croix) */
+.menu__header {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%;
+    margin-bottom: 4rem; /* Espace avant les liens */
+}
+
+.menu__logo img { width: 60px; }
+
+.menu__close-btn {
+    background: none; border: none; cursor: pointer;
+    font-size: 2.5rem; color: #333;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.menu__close-btn:hover { color: var(--gold-color); }
+
+/* LISTE DES LIENS */
+.menu__list {
+    list-style: none;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.menu__list li {
+    margin-bottom: 2rem;
+}
+
+.menu__list a {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--white);
+    text-decoration: none;
+    display: block;
+}
+
+.menu__list a:hover {
+    color: var(--gold-color);
+}
+
+/* Adaptation Mobile */
+@media (max-width: 768px) {
+    .menu__list a { font-size: 1.2rem; }
+}
 /* =========================================
    4. COMPOSANTS GLOBAUX (Carousels & Cartes)
    ========================================= */
