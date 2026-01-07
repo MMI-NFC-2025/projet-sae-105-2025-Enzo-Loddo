@@ -446,3 +446,37 @@ h1, h2, h3 { font-family: var(--font-title); font-weight: normal; text-transform
     .timeline-card::before { width: 22px; left: -22px; }
     .timeline-img { width: 85px; height: 85px; }
 }
+/* =========================================
+   11. PAGE LIVRE (Citation)
+   ========================================= */
+
+.quote-section {
+    padding: 0 1rem;
+    margin: 4rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.quote-box {
+    border: 1px solid var(--gold-color); /* Bordure dorée fine */
+    border-radius: 30px;                 /* Coins très arrondis */
+    padding: 2rem;
+    max-width: 600px;
+    text-align: center;
+    background-color: transparent;       /* Fond transparent */
+}
+
+.quote-box p {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.quote-author {
+    font-family: var(--font-title);      /* Police machine à écrire */
+    font-size: 0.9rem;
+    text-decoration: underline;          /* Nom souligné */
+    color: var(--text-secondary);
+}
